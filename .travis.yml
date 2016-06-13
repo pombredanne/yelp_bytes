@@ -1,6 +1,13 @@
 language: python
+python: "3.5"
 env: # These should match the tox env list
-    - TOXENV=py26
     - TOXENV=py27
-install: pip install tox --use-mirrors
+    - TOXENV=py34
+    - TOXENV=py35
+    - TOXENV=pypy
+    - TOXENV=pypy3
+install: pip install tox coveralls
 script: tox
+sudo: false
+after_success:
+    coveralls
